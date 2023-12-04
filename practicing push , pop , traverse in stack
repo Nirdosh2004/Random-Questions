@@ -1,0 +1,83 @@
+//stack push , pop , traverse 
+
+#include<iostream>
+using namespace std;
+#define size 5
+
+int stack[size] , top = -1 , key;
+
+void push(int key){
+    if(top==size-1){
+        cout<<"Stack is full\n";
+    }
+    else{
+        cout<<"Enter key to insert : ";
+        cin>>key;
+        top++;
+        stack[top] = key;
+    }
+}
+
+void pop(){
+    if(top==-1){
+        cout<<"Stack is empty ";
+    }
+    else{
+       
+        cout<<"Removed element is : "<<stack[top];
+         top--;
+    }
+}
+
+void traverse(){
+    if(top==-1){
+        cout<<"Stack is empty ";
+    }
+    else{
+        cout<<"Elements in stack : \n";
+        for(int i=top ;i>=0;i--){
+            cout<<stack[i]<< "  ";
+        }
+        cout<<endl;
+    }
+}
+
+int main(){
+    
+    while(1){
+        cout<<"Menu : \n1.Push\n2.Pop\n3.Traverse\n4.Exit\n";
+        int choice;
+        cout<<"Enter choice : ";
+        cin>>choice;
+        
+        switch(choice){
+            case 1:
+            {
+                push(key);
+                break;
+            }
+            case 2:
+            {
+                pop();
+                break;
+            }
+            case 3:
+            {
+                traverse();
+                break;
+            }
+            case 4:
+            {
+                cout<<"Exited from Program \n";
+                exit(0);
+            }
+            default:
+            {
+               cout<<"Invalid choice ";
+        }
+        }
+    }
+    
+    
+    return 0;
+}
