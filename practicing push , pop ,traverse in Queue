@@ -1,0 +1,85 @@
+//Queue push , pop , traverse
+
+#include<iostream>
+using namespace std;
+#define size 3 
+
+int queue[size] , front = -1 , rear = -1 , key;
+
+void push(int key){
+    if(rear==size-1){
+        cout<<"\nQueue is full ";
+    }
+    else{
+        if(front==-1){
+            front++;
+        }
+        cout<<"Enter element to insert : ";
+        cin>>key;
+        rear++;
+        queue[rear] = key;
+    }
+}
+
+void pop(){
+    if(rear==-1){
+        cout<<"\nQueue is empty ";
+    }
+    else{
+
+        cout<<"Removed element is : "<<queue[front]<<endl;
+                front++;
+    }
+}
+
+void traverse(){
+    if(rear==-1){
+        cout<<"\nQueue is empty already ";
+    }
+    else{
+        cout<<"\nElements in Queue : \n";
+        for(int i=front;i<=rear;++i){
+            cout<<queue[i]<<"  ";
+        }cout<<endl;
+    }
+}
+
+int main(){
+    
+    while(1){
+        cout<<"\nMenu\n1.Push\n2.Pop\n3.Traverse\n4.Exit\n";
+        int choice;
+        cout<<"Enter your choice : ";
+        cin>>choice;
+        
+        switch(choice){
+            case 1:
+            {
+                push(key);
+                break;
+            }
+            case 2:
+            {
+                pop();
+                break;
+            }
+            case 3:
+            {
+                traverse();
+                break;
+            }
+            case 4:
+            {
+                cout<<"\nExited from Program!!";
+                exit(0);
+            }
+            default:
+            {
+                cout<<"\nInvalid Choice !";
+            }
+        }
+    }
+
+    
+    return 0;
+}
