@@ -1,0 +1,72 @@
+// Binary tree -> insertion 
+
+#include<iostream>
+#include<queue>
+using namespace std;
+
+class node{
+    public:
+    int data;
+    node* left ;
+    node* right ;
+    node(int d ){
+        this -> data = d;
+        this -> left = NULL;
+        this -> right = NULL;
+    }
+};
+
+inline node* buildTree(node* root){
+    cout<<"Enter data :";
+    int data;
+    cin>>data;
+    root = new node(data);
+    if(data == -1){
+        return NULL;
+    }
+    cout<<"For left ";
+    root -> left = buildTree(root -> left);
+    cout<<"For Right";
+    root -> right =  buildTree(root -> right);
+    return root;
+}
+
+inline void levelOrderTraversal(node* root){
+    queue<node* >  q;
+    q.push(root);
+    q.push(NULL);
+    
+    while(!q.empty()){
+        node* temp = q.front();
+        
+        q.pop();
+        
+        if(temp == NULL){
+            cout<<endl;
+            if(!q.empty()){
+                q.push(NULL);
+            }
+        }
+        else{
+        cout<<temp -> data << "  ";
+        if(temp -> left){
+            q.push(temp -> left);
+        }
+        if(temp -> right){
+            q.push(temp -> right);
+        }
+    }
+    }
+}
+
+int main(){
+  
+  node* root = NULL;
+  
+  root = buildTree(root);
+  cout<<"Answer: \n";
+    levelOrderTraversal(root);
+    //4 5 12 18 -1 -1 -1 18 -1 14 -1 -1 9 16 -1 -1 17 -1 12 -1 -1
+    
+    return 0;
+}
